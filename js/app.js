@@ -55,3 +55,13 @@ Img.loadImgs = () => {
 
 $(() => Img.readJson());
 
+
+$(document).ready(function () {
+$('select').on('click', function () {
+  $('div').hide();
+  let selectedValue = $(this).val();
+  $(`div[class=${selectedValue}]`).show();
+  
+});
+
+})
