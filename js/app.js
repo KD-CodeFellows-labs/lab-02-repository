@@ -14,7 +14,7 @@ Img.prototype.render = function () {
   $('main').append('<div class="clone"></div>');
 
   let objClone = $('div[class="clone"]');
-  // console.log('clone ', objClone);  
+  // console.log('clone ', objClone);
   let objHtml = $('#photo-template').html();
 
   objClone.html(objHtml);
@@ -57,11 +57,11 @@ $(() => Img.readJson());
 
 
 $(document).ready(function () {
-$('select').on('click', function () {
-  $('div').hide();
-  let selectedValue = $(this).val();
-  $(`div[class=${selectedValue}]`).show();
-  
-});
+  $('select').on('click', function () {
+    $('div').hide();
+    let selectedValue = $(this).val();
+    $(`div[class=${selectedValue}]`).show();
+
+  });
 
 })
