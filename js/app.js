@@ -14,20 +14,25 @@ Img.prototype.render = function () {
   $('main').append('<div class="clone"></div>');
 
   let objClone = $('div[class="clone"]');
-  console.log('clone ', objClone);  
+  // console.log('clone ', objClone);  
   let objHtml = $('#photo-template').html();
 
   objClone.html(objHtml);
 
   objClone.find('h2').text(this.title);
-  console.log('title ', this.title);
+  // console.log('title ', this.title);
 
   objClone.find('img').attr('src', this.img_url);
-  console.log('image', this.img_url);
+  // console.log('image', this.img_url);
   objClone.find('p').text(this.description);
   objClone.removeClass('clone');
   objClone.attr('class', this.keyword);
-  console.log('html ', objHtml);
+  // console.log('html ', objHtml);
+  $('select').append('<option class="clone"></option>');
+  let selectClone = $('option[class="clone"]');
+  selectClone.attr('value', this.keyword);
+  selectClone.text(this.keyword);
+  selectClone.removeClass('clone');
 };
 
 
@@ -49,3 +54,4 @@ Img.loadImgs = () => {
 };
 
 $(() => Img.readJson());
+
