@@ -1,0 +1,20 @@
+div{
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 350px; 
+  height: 400px;
+  font-family:'Open Sans Condensed'; 
+  font-size: 20px;
+}
+h1{
+  font-family:'Open Sans Condensed';
+  padding: 10px;
+  font-size: 30px;
+}
+p{
+  font-family:'Open Sans Condensed';
+    font-size: 20px;
+    padding: 5px;
+}
