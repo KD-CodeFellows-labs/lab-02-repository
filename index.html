@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script id="img-template" type="text/x-handlebars-template">
-      <div>
+      <div class="{{keyword}}" >
         <h2>{{title}}</h2>
         <img src="{{img_url}}" alt="{{keyword}}">
         <p>{{description}}</p>
@@ -26,8 +26,10 @@
       <select>
         <option value="default">Filter by Keyword</option>
       </select>
-      <input type="button" value="Page 1"/>
-      <input type="button" value="Page 2"/>
+      <input class="page" type="button" value="Page 1"/>
+      <input class="page" type="button" value="Page 2"/>
+      <input class="sort" type="button" value="horns"/>
+      <input class="sort" type="button" value="title"/>
     </header>
     <main>
       <section id="photo-template">

@@ -49,35 +49,32 @@ Img.prototype.render = function () {
   }
 };
 
-
 Img.readJson = (jsonFile) => {
   $.get(jsonFile)
     .then(data => {
       data.forEach(item => {
         Img.allImgs.push(new Img(item));
-        console.log(Img.allImgs);
+        // console.log(Img.allImgs);
       });
     })
     .then(Img.loadImgs);
 };
 
 Img.loadImgs = () => {
-  // console.log("line41");
   Img.allImgs.forEach(obj => obj.render());
-
 };
 
-$(() => Img.readJson('../data/page-1.json'));
-
+Img.readJson('../data/page-1.json');
 let butVal;
 
 $(document).ready(function () {
+  console.log(Img.allImgs);
   //Switch Pages
-  $('input').on('click', function () {
+  $('input.page').on('click', function () {
     $('div').remove();
     Img.allImgs = [];
     butVal = $(this).val();
-    console.log('butt: ', butVal);
+    // console.log('butt: ', butVal);
     if (butVal === 'Page 1') {
       Img.readJson('../data/page-1.json');
       $('div').show();
@@ -87,6 +84,32 @@ $(document).ready(function () {
       $('div').show();
     }
   })
+  //Sorting
+  $('input.sort').on('click', function () {
+    console.log($(this).val());
+    if ($(this).val() === 'horns') {
+      Img.allImgs.sort((a,b)=>{
+        return b.horns - a.horns;
+      });
+      console.log(Img.allImgs);
+      $('div').show();
+    }
+    else if ($(this).val() === 'title') {
+      Img.allImgs.sort( (a, b)=>{
+        if (a.title > b.title) {
+          return 1;
+        }
+        if (a.title < b.title) {
+          return -1;
+        }
+        return 0;
+      });
+      $('div').show();
+      console.log(Img.allImgs);
+    }
+    Img.allImgs.forEach(obj => obj.render());
+  });
+
   // Filter
   $('select').on('change', function () {
     $('div').hide();
