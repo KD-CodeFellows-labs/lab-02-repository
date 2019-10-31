@@ -1,4 +1,5 @@
 'use strict';
+let seen = {};
 
 function Img(obj) {
   this.img_url = obj.image_url;
@@ -28,16 +29,21 @@ Img.prototype.render = function () {
   objClone.removeClass('clone');
   objClone.attr('class', this.keyword);
   // console.log('html ', objHtml);
-  $('select').append('<option class="clone"></option>');
-  let selectClone = $('option[class="clone"]');
-  selectClone.attr('value', this.keyword);
-  selectClone.text(this.keyword);
-  selectClone.removeClass('clone');
+  // Fill Select with options
+  // $('option').remove();
+  if ( ! seen[this.keyword]) {
+    $('select').append('<option class="clone"></option>');
+    let selectClone = $('option[class="clone"]');
+    selectClone.attr('value', this.keyword);
+    selectClone.text(this.keyword);
+    selectClone.removeClass('clone');
+    seen[this.keyword] = true;
+  }
 };
 
 
-Img.readJson = () => {
-  $.get('../data/page-1.json')
+Img.readJson = (jsonFile) => {
+  $.get(jsonFile)
     .then(data => {
       data.forEach(item => {
         Img.allImgs.push(new Img(item));
@@ -53,11 +59,27 @@ Img.loadImgs = () => {
 
 };
 
-// $(() => Img.readJson());
+$(() => Img.readJson('../data/page-1.json'));
 
+let butVal;
 
 $(document).ready(function () {
-  $(() => Img.readJson());
+  //Switch Pages
+  $('input').on('click', function () {
+    $('div').remove();
+    Img.allImgs = [];
+    butVal = $(this).val();
+    console.log('butt: ', butVal);
+    if (butVal === 'Page 1') {
+      Img.readJson('../data/page-1.json');
+      $('div').show();
+    }
+    else if (butVal === 'Page 2') {
+      Img.readJson('../data/page-2.json');
+      $('div').show();
+    }
+  })
+  // Filter
   $('select').on('change', function () {
     $('div').hide();
     let selectedValue = $(this).val();
