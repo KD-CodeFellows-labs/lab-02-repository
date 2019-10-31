@@ -1,5 +1,13 @@
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* flex-flow: column wrap; */
+}
+main>* {
+  /* flex-direction: column; */
+}
 div{
-  float: left;
   margin-left: 20px;
   margin-bottom: 10px;
   padding: 5px;
