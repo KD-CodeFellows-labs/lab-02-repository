@@ -32,13 +32,10 @@ Img.prototype.render = function () {
   //HandleBar Template
   let source   = document.getElementById('img-template').innerHTML;
   let template = Handlebars.compile(source);
-  // let context = {title: "My New Post", body: "This is my first post!"};
   let html    = template(this);
   $('main').append(html );
 
-  // console.log('html ', objHtml);
   // Fill Select with options
-  // $('option').remove();
   if ( ! seen[this.keyword]) {
     $('select').append('<option class="clone"></option>');
     let selectClone = $('option[class="clone"]');

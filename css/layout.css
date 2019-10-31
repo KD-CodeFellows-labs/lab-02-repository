@@ -1,11 +1,9 @@
 main {
+  width: 90vw;
+  height: 150vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* flex-flow: column wrap; */
-}
-main>* {
-  /* flex-direction: column; */
 }
 div{
   margin-left: 20px;

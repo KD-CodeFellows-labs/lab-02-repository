@@ -3,3 +3,11 @@ select{
   height: 50px;
   font-family:'Inconsolata', monospace;
 }
+input{
+  width: 110px;
+  height: 150px;
+  font-family:'Inconsolata', monospace;
+}
+legend{
+  font-family: 'Inconsolata', monospace;
+}
