@@ -53,15 +53,19 @@ Img.loadImgs = () => {
 
 };
 
-$(() => Img.readJson());
+// $(() => Img.readJson());
 
 
 $(document).ready(function () {
-  $('select').on('click', function () {
+  $(() => Img.readJson());
+  $('select').on('change', function () {
     $('div').hide();
     let selectedValue = $(this).val();
-    $(`div[class=${selectedValue}]`).show();
-
+    if (selectedValue === 'default') {
+      $('div').show();
+    } else {
+      $(`div[class=${selectedValue}]`).show();
+    }
   });
 
 })
