@@ -12,22 +12,30 @@ function Img(obj) {
 Img.allImgs = [];
 
 Img.prototype.render = function () {
-  $('main').append('<div class="clone"></div>');
+  // $('main').append('<div class="clone"></div>');
 
-  let objClone = $('div[class="clone"]');
-  // console.log('clone ', objClone);
-  let objHtml = $('#photo-template').html();
+  // let objClone = $('div[class="clone"]');
+  // // console.log('clone ', objClone);
+  // let objHtml = $('#photo-template').html();
 
-  objClone.html(objHtml);
+  // objClone.html(objHtml);
 
-  objClone.find('h2').text(this.title);
-  // console.log('title ', this.title);
+  // objClone.find('h2').text(this.title);
+  // // console.log('title ', this.title);
 
-  objClone.find('img').attr('src', this.img_url);
-  // console.log('image', this.img_url);
-  objClone.find('p').text(this.description);
-  objClone.removeClass('clone');
-  objClone.attr('class', this.keyword);
+  // objClone.find('img').attr('src', this.img_url);
+  // // console.log('image', this.img_url);
+  // objClone.find('p').text(this.description);
+  // objClone.removeClass('clone');
+  // objClone.attr('class', this.keyword);
+
+  //HandleBar Template
+  let source   = document.getElementById('img-template').innerHTML;
+  let template = Handlebars.compile(source);
+  // let context = {title: "My New Post", body: "This is my first post!"};
+  let html    = template(this);
+  $('main').append(html );
+
   // console.log('html ', objHtml);
   // Fill Select with options
   // $('option').remove();
