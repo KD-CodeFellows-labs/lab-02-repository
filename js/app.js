@@ -107,7 +107,8 @@ $(document).ready(function () {
       $('div').show();
       console.log(Img.allImgs);
     }
-    Img.allImgs.forEach(obj => obj.render());
+    $('div').remove();
+    Img.loadImgs();
   });
 
   // Filter
